@@ -738,6 +738,9 @@ textarea {
 	color: #fff;
 }
 
+.product-card a.added_to_cart,
+.add_to_cart_button,
+.product-title-price .price,
 .woocommerce-loop-product__title,
 .site-footer h5,
 .site-header .primary-menu li {
@@ -753,7 +756,7 @@ h4,
 h5,
 h6,
 .site-header .primary-menu li,
-.heading {
+.heading, .product-title-price .price, .product-card a.added_to_cart {
 	font-family: var(--heading-font-family);
 	font-weight: var(--heading-font-weight);
 	font-style: var(--heading-font-style);
@@ -857,6 +860,7 @@ h6,
 	object-fit: cover;
 }
 
+.product-title-price .price,
 .heading-font-spacing {
 	letter-spacing: .2em;
 }
@@ -924,8 +928,86 @@ h6,
 }
 
 /*--------------------------------------------------------------
-# Plugins
+# Components
 --------------------------------------------------------------*/
+/* Product card  */
+.product-title-price .price{
+	color:var(--text-color-light);
+}
+
+.woocommerce-loop-product__title {
+	font-size: .8rem;
+	margin-bottom:0;
+}
+
+.product-thumbnail-cart img {
+	height:calc(100vh / 2 - 3rem);
+	object-fit: cover;
+}
+
+.add_to_cart_button {
+	position: absolute;
+	bottom: 1rem;
+	z-index: 9;
+	width: calc(100% - 2rem);
+	margin: 0px auto;
+	text-align: center;
+	background: #30ada2;
+	padding: .4rem;
+	color: #fff;
+	font-size: 10px;
+	left: 0;
+	right: 0;
+	transform:translateY(200%);
+}
+
+.product-title-price {
+	margin-top: 1rem;
+}
+
+.add_to_cart_button{
+	transition:.3s ease-in-out all;
+}
+
+.add_to_cart_button{
+	opacity:0;
+	visibility:hidden;
+}
+
+.product-thumbnail-cart {
+	overflow: hidden;
+}
+
+.product-card {
+	margin: 1rem 0 2rem;
+}
+
+.product-first {
+	height: calc(100% - 2rem);
+}
+
+.product-card:hover .add_to_cart_button {
+	opacity: 1;
+	visibility: visible;
+}
+
+.product-card:hover .add_to_cart_button {
+	transform:translateY(0);
+}
+
+.product-card:hover .add_to_cart_button{
+	color:#fff;
+}
+
+.product-card a.added_to_cart {
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    right: 0;
+    color: #fff;
+    margin: 1rem;
+}
+
 /*--------------------------------------------------------------
 # Utilities
 --------------------------------------------------------------*/

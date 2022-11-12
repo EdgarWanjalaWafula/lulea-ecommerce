@@ -45,6 +45,7 @@ function lulea_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
+	add_image_size( 'product-thumbnail', 250, 320, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
@@ -140,7 +141,6 @@ add_action( 'widgets_init', 'lulea_widgets_init' );
 function lulea_scripts() {
 	wp_enqueue_style( 'lulea-aos', '//cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css', array(), _S_VERSION );
 	wp_enqueue_style( 'lulea-animate', '//cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css', array(), _S_VERSION );
-	// wp_enqueue_style( 'lulea-owl-carousel', '//cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'lulea-owl-theme', '//unpkg.com/flickity@2/dist/flickity.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'lulea-bs-icons', '//cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css', array(), _S_VERSION );
 	wp_enqueue_style( 'lulea-bs', '//cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0-beta1/css/bootstrap.min.css', array(), _S_VERSION );

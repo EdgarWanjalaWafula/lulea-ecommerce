@@ -28,6 +28,8 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_before_main_content' );
 
+do_action( 'lulea_page_template' );
+
 ?>
 <div class="woocommerce-products-header position-relative shop-inner-banner d-flex align-items-end">
     <img class="position-absolute h-100 w-100 theme-obj-fit" src="<?php echo wp_get_attachment_image_url('57', 'full'); ?>" alt="Luxury Leather Kenya">
