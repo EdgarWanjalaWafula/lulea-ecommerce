@@ -57,8 +57,9 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 	--heading-font-family: Montserrat, sans-serif;
 	--heading-font-weight: 500;
 	--heading-font-style: normal;
-	--text-font-family: "Nunito Sans", sans-serif;
+	--text-font-family: "Corbel", sans-serif;
 	--text-font-weight: 400;
+	--text-font-size:1rem;
 	--text-font-style: normal;
 	--theme-brand-color: #25a89d;
 	--base-text-font-size: 14px;
@@ -468,6 +469,7 @@ textarea {
 	color: var(--text-color);
 	background: var(--background);
 	line-height: 1.65;
+	font-size:var(--text-font-size);
 }
 
 h1,
@@ -621,7 +623,7 @@ a:active {
 button,
 input[type="button"],
 input[type="reset"],
-input[type="submit"] {
+input[type="submit"]:not(.wpcf7-submit) {
 	border: 1px solid;
 	border-color: #ccc #ccc #bbb;
 	border-radius: 3px;
@@ -698,9 +700,30 @@ textarea {
 	width: 100%;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] {
+	height: 43px;
+}
+
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
+.shop-padding {
+	padding: 4rem 0;
+}
 
 /*--------------------------------------------------------------
 # Components
@@ -710,7 +733,7 @@ textarea {
 .site-header {
 	top: 0;
 	border-bottom: 1px solid rgba(255, 255, 255, .3);
-	z-index: 999999;
+	z-index: 999;
 }
 
 .site-branding {
@@ -738,6 +761,11 @@ textarea {
 	color: #fff;
 }
 
+.form-group label, 
+.newsletter-container span,
+.theme-small,
+.product-sort-filter select,
+.product-sort-filter,
 .product-card a.added_to_cart,
 .add_to_cart_button,
 .product-title-price .price,
@@ -756,11 +784,15 @@ h4,
 h5,
 h6,
 .site-header .primary-menu li,
-.heading, .product-title-price .price, .product-card a.added_to_cart {
+.heading,
+.product-title-price .price,
+.product-card a.added_to_cart,
+.product-sort-filter select, .form-group label {
 	font-family: var(--heading-font-family);
 	font-weight: var(--heading-font-weight);
 	font-style: var(--heading-font-style);
 	transition: color .2s ease-in-out;
+	text-transform: uppercase;
 }
 
 .site-header .primary-menu li {
@@ -775,8 +807,28 @@ h6,
 	font-size: 2rem;
 }
 
+.woocommerce-shop .site-header, 
+.front .site-header{
+	position:absolute;
+}
+
+.header-right-icons li:last-child a span:last-child {
+    font-size: 14px;
+    background: #30ada2;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+    bottom: 8px;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .higher-z-index {
-	z-index: 9999999999999;
+	z-index:999;
 }
 
 .site-footer h5 {
@@ -788,9 +840,26 @@ h6,
 	padding: 4rem 0;
 }
 
-/* Comments
---------------------------------------------- */
+.single-product .site-header ul li a,
+.woocommerce-cart .site-header ul li a{
+	color:#000;
+}
 
+.single-product .site-header ul li a,
+.woocommerce-cart .site-header ul li a{
+
+}
+
+/* Cart
+--------------------------------------------- */
+.woocommerce-cart-form thead tr th:nth-child(2) {
+	width:10%;
+}
+
+.table td,
+.table th {
+	vertical-align: middle !important;
+}
 
 /* Widgets
 --------------------------------------------- */
@@ -818,25 +887,39 @@ h6,
 	display: inline-block;
 }
 
-/* Captions
+/* Newsletter
 --------------------------------------------- */
-.wp-caption {
-	margin-bottom: 1.5em;
-	max-width: 100%;
+.modal-backdrop.show {
+    opacity: .9;
+    z-index: 999999999;
 }
 
-.wp-caption img[class*="wp-image-"] {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
+.newsletter-content,
+.newsletter-container>img {
+	width: 50%;
 }
 
-.wp-caption .wp-caption-text {
-	margin: 0.8075em 0;
+.newsletter-content {
+	padding: 2.5rem;
 }
 
-.wp-caption-text {
-	text-align: center;
+.theme-bg, 
+.theme-loading,
+.theme-loader,
+.newsletter-content button {
+	background-color: var(--theme-brand-color);
+}
+
+.newsletter-content button {
+	margin: 1rem 0;
+}
+
+.social > li{
+	flex-grow:1;
+}
+
+.modal {
+     z-index: 999999999999; /* assign a higher value than any element on the page  */
 }
 
 /*--------------------------------------------------------------
@@ -846,6 +929,7 @@ h6,
 	height: 100vh;
 }
 
+.grid-items div:first-child a,
 .flickity-viewport,
 .carousel,
 .theme-carousel,
@@ -860,12 +944,14 @@ h6,
 	object-fit: cover;
 }
 
+.shop-inner-banner h1,
+.theme-letter-spacing,
 .product-title-price .price,
 .heading-font-spacing {
 	letter-spacing: .2em;
 }
 
-.banner-slider > div {
+.banner-slider>div {
 	margin-bottom: calc(100vh / 5);
 }
 
@@ -895,7 +981,6 @@ h6,
 	font-family: var(--heading-font-family);
 	font-weight: var(--heading-font-weight);
 	font-style: var(--heading-font-style);
-	background-color: transparent;
 	transition: color .45s cubic-bezier(.785, .135, .15, .86), border .45s cubic-bezier(.785, .135, .15, .86);
 	z-index: 1;
 	-webkit-tap-highlight-color: initial;
@@ -910,6 +995,7 @@ h6,
 	border-color: #fff;
 }
 
+.single-product div.product .woocommerce-product-gallery,
 .carousel-cell {
 	width: 100%;
 }
@@ -923,26 +1009,77 @@ h6,
 	height: 200px;
 }
 
-.shop-home-banner{
-	background-color:#000;
+.shop-home-banner {
+	background-color: #000;
 }
 
+.grid-items>div:nth-child(2)> :not(.card:first-child) {
+	width: 50%;
+	float: left;
+}
+
+.grid-items>div:nth-child(2)>a {
+	height: calc(100vh / 3 + 2rem);
+}
+
+.grid-items>div:nth-child(2) a:first-child {
+	margin-bottom: calc(1.5rem * .5);
+}
+
+.category-card>div {
+	padding: 2rem;
+}
+
+.product-first::before, 
+.category-card::before, 
+.banner-slider::before, 
+.product-first>div::before,
+.category-card::before {
+	position: absolute;
+	content: '';
+	background: rgba(0, 0, 0, .15);
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	top: 0;
+}
+
+.grid-items>div:nth-child(2)>a:last-child {
+	margin-left: calc(1.5rem * .5);
+	width: calc(50% - calc(1.5rem * .5)) !important;
+}
+
+.grid-items div:first-child {
+	font-size: 1.2rem;
+}
+
+.form-group {
+    margin: 0 0 1rem;
+}
+
+.form-group *,
+.form-group input{
+	border-radius:0;
+}
+
+.form-group textarea {
+    height: 120px;
+}
 /*--------------------------------------------------------------
-# Components
+# Shop Page
 --------------------------------------------------------------*/
 /* Product card  */
-.product-title-price .price{
-	color:var(--text-color-light);
+.product-title-price .price {
+	color: var(--text-color-light);
 }
 
 .woocommerce-loop-product__title {
 	font-size: .8rem;
-	margin-bottom:0;
 }
 
 .product-thumbnail-cart img {
-	height:calc(100vh / 2 - 3rem);
-	object-fit: cover;
+	height: calc(100vh / 2 - 3rem);
+	object-fit: contain;
 }
 
 .add_to_cart_button {
@@ -958,20 +1095,20 @@ h6,
 	font-size: 10px;
 	left: 0;
 	right: 0;
-	transform:translateY(200%);
+	transform: translateY(200%);
 }
 
 .product-title-price {
 	margin-top: 1rem;
 }
 
-.add_to_cart_button{
-	transition:.3s ease-in-out all;
+.add_to_cart_button {
+	transition: .3s ease-in-out all;
 }
 
-.add_to_cart_button{
-	opacity:0;
-	visibility:hidden;
+.add_to_cart_button {
+	opacity: 0;
+	visibility: hidden;
 }
 
 .product-thumbnail-cart {
@@ -992,20 +1129,30 @@ h6,
 }
 
 .product-card:hover .add_to_cart_button {
-	transform:translateY(0);
+	transform: translateY(0);
 }
 
-.product-card:hover .add_to_cart_button{
-	color:#fff;
+.product-card:hover .add_to_cart_button {
+	color: #fff;
 }
 
 .product-card a.added_to_cart {
-    position: absolute;
-    top: 0;
-    z-index: 999;
-    right: 0;
-    color: #fff;
-    margin: 1rem;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	right: 0;
+	color: #fff;
+	margin: 1rem;
+}
+
+/* Filter  */
+.product-sort-filter {
+	border-bottom: 1px solid #d7d7d7;
+	margin-bottom: 2rem;
+}
+
+.product-sort-filter span {
+	margin: 1rem 0;
 }
 
 /*--------------------------------------------------------------
@@ -1014,6 +1161,12 @@ h6,
 /* Page title  */
 .shop-inner-banner {
 	height: calc(100vh * 2/3);
+}
+
+.shop-inner-banner h1 {
+	font-size: 2.5rem;
+	font-weight: 600;
+	margin: 100px 0 0 0;
 }
 
 /* Accessibility

@@ -165,11 +165,10 @@ if ( ! function_exists( 'lulea_woocommerce_cart_link_fragment' ) ) {
 		ob_start();
 		lulea_woocommerce_cart_link();
 		$fragments['a.cart-contents'] = ob_get_clean();
-
+		
 		return $fragments;
 	}
 }
-add_filter( 'woocommerce_add_to_cart_fragments', 'lulea_woocommerce_cart_link_fragment' );
 
 if ( ! function_exists( 'lulea_woocommerce_cart_link' ) ) {
 	/**

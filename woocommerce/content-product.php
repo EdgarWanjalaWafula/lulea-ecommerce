@@ -25,6 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <li <?php wc_product_class( 'col-lg-3', $product ); ?>>
+
 	<div class="product-card">
 		<div class="product-thumbnail-cart position-relative">
 			<?php

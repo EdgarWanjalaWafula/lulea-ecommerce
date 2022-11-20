@@ -20,13 +20,31 @@
 				</div>
 				<div class="col">
 					<h5 class="heading text-uppercase">shop</h5>
+					<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-2',
+								'menu_id'        => 'shop-menu'
+							)
+						);
+					?>
 				</div>
 				<div class="col">
 					<h5 class="heading text-uppercase">information</h5>
+					<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'menu-3',
+								'menu_id'        => 'information-menu'
+							)
+						);
+					?>
 				</div>
 				<div class="col">
 					<h5 class="heading text-uppercase">newsletter</h5>
-					<p>Subscribe to get notified about product launches, special offers and company news.</p>
+					<p>Join our mailing list to stay up to date
+
+</p>
 				</div>
 			</div>
 		</div>

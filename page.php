@@ -20,7 +20,15 @@ $post_slug = $post->post_name;
 	<main id="primary" class="site-main page-<?php echo $post_slug; ?>">
 		<?php		
 			if(is_page('home')){
-				
+				//get_template_part('template-parts/content', 'newsletter-popup');
+			}
+
+			if(is_shop()){
+				echo "haha";
+			}
+
+			if(!is_page(['home'])){
+				get_template_part('template-parts/content', 'component-page-banner');
 			}
 			while ( have_posts() ) :
 				the_post();

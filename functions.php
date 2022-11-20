@@ -45,12 +45,17 @@ function lulea_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'product-thumbnail', 250, 320, true );
+	add_image_size( 'product-thumbnail', 330, 413, false );
+	add_image_size( 'category-thumbnail', 600, 600, true );
+	add_image_size( 'slider-image', 1920, 1080, true );
+	add_image_size( 'banner-image', 1920, 720, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'lulea' ),
+			'menu-2' => esc_html__( 'Footer: Shop', 'lulea' ),
+			'menu-3' => esc_html__( 'Footer: Information', 'lulea' ),
 		)
 	);
 
@@ -149,6 +154,7 @@ function lulea_scripts() {
 	wp_enqueue_style( 'lulea-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'lulea-style', 'rtl', 'replace' );
 	wp_enqueue_style( 'lulea-mobile', get_template_directory_uri() . '/css/responsive.css', _S_VERSION );
+	wp_enqueue_style( 'lulea-preloader', get_template_directory_uri() . '/css/preloader.css', _S_VERSION );
 	
 	wp_enqueue_script( 'lulea-jquery-js', '//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js', array(), _S_VERSION, true );
 	wp_enqueue_script( 'lulea-popper-js', '//cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js', array(), _S_VERSION, true );

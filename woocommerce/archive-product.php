@@ -28,22 +28,16 @@ get_header( 'shop' );
  */
 do_action( 'woocommerce_before_main_content' );
 
-do_action( 'lulea_page_template' );
-
 ?>
-<div class="woocommerce-products-header position-relative shop-inner-banner d-flex align-items-end">
-    <img class="position-absolute h-100 w-100 theme-obj-fit" src="<?php echo wp_get_attachment_image_url('57', 'full'); ?>" alt="Luxury Leather Kenya">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col position-relative">
-					<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-					<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
-					<?php endif; ?>
-				</div>
-			</div>
-		</div>
-
-    <?php
+<div class="woocommerce-products-header">
+	<?php 
+	/**
+	 * Hook: lulea_after_header
+	 *
+	 * @hooked custom_page_banner - 10
+	 */
+	do_action( 'lulea_after_header' );
+	
 	/**
 	 * Hook: woocommerce_archive_description.
 	 *
@@ -55,21 +49,33 @@ do_action( 'lulea_page_template' );
 </div>
 
 <div class="all-products position-relative">
-	<div class="product-sort-filter">
+	<div class="product-sort-filter text-uppercase heading">
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col">filter</div>
-				<div class="col">count</div>
-				<div class="col">sort</div>
+			<div class="row justify-content-between align-items-center">
+				<div class="col-lg-3">
+					<span class="d-flex align-items-center">filter <span class="material-symbols-sharp">
+tune
+</span></span>
+				</div>
+				<div class="col-lg-6">
+					<div class="d-flex justify-content-between align-items-center">
+						<?php 
+							/**
+							 * Hook: lulea_filter_bar.
+							 *
+							 * @hooked woocommerce_catalog_ordering - 10
+							 * @hooked woocommerce_result_count - 10
+							 */
+							do_action( 'lulea_filter_bar' );
+						?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<div class="product-loop">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-lg-2"><!--  show/collapse filter  -->
-					insert filter here
-				</div>
 				<div class="col">
 					<?php
 						if ( woocommerce_product_loop() ) {

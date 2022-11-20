@@ -163,3 +163,25 @@ if ( ! function_exists( 'wp_body_open' ) ) :
 		do_action( 'wp_body_open' );
 	}
 endif;
+
+
+if(!function_exists( 'lulea_theme_img')): 
+	function lulea_theme_img($arr, $size, $class){
+		if($arr): 
+			$img_id 	= $arr['ID']; 
+			$img_src 	= wp_get_attachment_image_url($img_id, $size);
+			$img_srcset = wp_get_attachment_image_srcset($img_id, $size);
+			?>
+				<img src="<?php echo esc_url($img_src); ?>"
+					class="<?php echo esc_attr($class); ?>"
+					srcset="<?php echo esc_attr($img_srcset); ?>"
+					sizes="(max-width: 50em) 87vw, 680px" alt="Lulea">
+			<?php
+		else: 
+			?>
+				<img src="<?php echo esc_url(wp_get_attachment_image_url('22', $size)); ?>"
+					class="<?php echo esc_attr($class); ?>">
+			<?php
+		endif;
+	}
+endif;
